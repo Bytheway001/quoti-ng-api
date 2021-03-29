@@ -1,0 +1,46 @@
+{
+    "name": "bytheway001/microfw",
+    "description": "Boilerplate to develop php apps easily",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael",
+            "email": "Bytheway0708@gmail.com"
+        }
+    ],
+
+    "minimum-stability": "dev",
+    "require": {
+        "php-activerecord/php-activerecord": "^1.2",
+        "symfony/yaml": "^3.4",
+        "mikehaertl/phpwkhtmltopdf": "^2.2",
+        "filp/whoops": "^2.1",
+        "dannyvankooten/php-router": "dev-master",
+        "vlucas/phpdotenv": "5.3.x-dev",
+        "firebase/php-jwt": "dev-master"
+    },
+    "scripts":{
+        "test":"vendor\\bin\\phpunit Tests --testdox -c phpunit.xml",
+        "generate":"Core\\bin\\generator generate"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\":"App",
+            "Core\\":"Core"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Bytheway001/PHP-Router"
+        },
+        {
+            "type":"vcs",
+            "url":"https://github.com/Bytheway001/php-activerecord"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "9"
+    }
+}

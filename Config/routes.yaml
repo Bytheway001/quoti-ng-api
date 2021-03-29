@@ -1,0 +1,18 @@
+base_path: /
+routes:
+  home:
+    login: [/login,login,POST]
+    index: [/test,index,GET]
+    auth: [/auth,auth,GET]
+    index_p: [/:id,index,POST]
+
+
+
+
+
+
+
+
+
+
+
