@@ -1,0 +1,17 @@
+Admin\companies:
+    list: [/admin/companies,list,GET]
+    create: [/admin/companies,create,POST]
+    delete: [/admin/companies/:id,delete,DELETE]
+    update: [/admin/companies/:id,update,PUT]
+Admin\regions:
+    list: [/admin/regions,list,GET]
+    create: [/admin/regions,create,POST]
+    delete: [/admin/regions/:id,delete,DELETE]
+    update: [/admin/regions/:id,update,PUT]
+Admin\plans:
+    list: [/admin/plans,list,GET]
+    create: [/admin/plans,create,POST]
+    delete: [/admin/plans/:id,delete,DELETE]
+    update: [/admin/plans/:id,update,PUT]
+    show: [/admin/plans/:id,show,GET]
+

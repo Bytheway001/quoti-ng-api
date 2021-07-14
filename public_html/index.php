@@ -7,12 +7,13 @@ use PHPRouter\Router;
 use PHPRouter\Route;
 use PHPRouter\Config;
 use Dotenv\Dotenv;
-
 $dotenv = Dotenv::createImmutable("../");
 $dotenv->load();
 $config = Config::loadFromFile(PROJECTPATH.'/config/routes.yaml');
-$router = Router::parseConfig($config);
+$admin_config = Config::loadFromFile(PROJECTPATH.'/config/admin_routes.yaml');
+$config['routes']=array_merge($config['routes'],$admin_config);
 
+$router = Router::parseConfig($config);
 ActiveRecord\Config::initialize(function($cfg)
 {
 	$cfg->set_model_directory(PROJECTPATH.'/App/Models');
