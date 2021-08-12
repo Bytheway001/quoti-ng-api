@@ -9,7 +9,9 @@ date_default_timezone_set('America/La_Paz');
 
 $allowedOrigins = [
     "http://localhost:3000",
-    "http://127.0.0.1:3000"
+    "http://127.0.0.1:3000",
+    "https://test.quotiapp.com",
+    "https://quotiapp.com"
 ];
 
 if (isset($_SERVER["HTTP_ORIGIN"]) && in_array($_SERVER["HTTP_ORIGIN"], $allowedOrigins)) {
