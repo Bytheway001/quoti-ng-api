@@ -1,12 +1,27 @@
 base_path: /
 routes:
+  auth:
+    get_access_token: [/oauth/token,getAccessToken,POST]
   home:
-    login: [/login,login,POST]
-    index: [/test,index,GET]
-    auth: [/auth,auth,GET]
-    index_p: [/:id,index,POST]
-
-
+    home: [/home,home,GET]
+  users:
+    confirm: [/users/confirm,confirm,GET]
+    login: [/users/login,login,POST]
+    recover_password: [/users/recover_password,recoverPassword,POST]
+    update_password: [/users/update_password,updatePassword,PUT]
+    refresh_token: [/users/refresh_token,refreshToken,POST]
+    show: [/users/:id,show,GET]
+  plans:
+    quote: [/plans/quote,quote,POST]
+    compare: [/plans/compare,compare,POST]
+    list: [/plans,list,GET]
+    get_names: [/plans/getNames,getNames,GET]
+  files:
+    list: [/files,list,GET]
+  exports:
+    export_quote: [/exports/quote,exportQuote,POST]
+    export_compare: [/exports/compare,exportCompare,POST]
+ 
 
 
 
