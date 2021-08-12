@@ -3,7 +3,7 @@ namespace App\Models;
 use \ActiveRecord\Utils;
 class Model extends \ActiveRecord\Model{
 
-	public function list($filters=null, array $includes=[]) {
+	public static function list($filters=null, array $includes=[]) {
         $result=[];
         if ($filters) {
             $models = static::all($filters);
