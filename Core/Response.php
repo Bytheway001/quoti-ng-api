@@ -26,14 +26,14 @@ class Response{
 		return self::$instance;
 	}
 
-	public function send($code=200,$response){
+	public static function send($code=200,$response){
 		header('Content-type:application/json');
 		http_response_code($code);
 		echo json_encode(['errors'=>false,'data'=>$response]);
 		exit();
 	}
 
-	public function crash($code,$response){
+	public static function crash($code,$response){
 		header('Content-type:application/json');
 		http_response_code($code);
 		echo json_encode(['errors'=>true,'data'=>$response]);
