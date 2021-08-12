@@ -4,8 +4,9 @@ use Core\Response;
 use App\Models\User;
 class authController extends Controller{
 	public function getAccessToken(){
-		$request = \OAuth2\Request::createFromGlobals();
 		
+		$request = \OAuth2\Request::createFromGlobals();
+
 		$response =  new \OAuth2\Response();
 		$token = \Core\Session::$server->handleTokenRequest($request,$response);
 		$parameters = $response->getParameters();
