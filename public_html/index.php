@@ -1,4 +1,5 @@
 <?php 
+
 require '../Core/init.php';
 require "../vendor/autoload.php";
 use PHPRouter\RouteCollection;

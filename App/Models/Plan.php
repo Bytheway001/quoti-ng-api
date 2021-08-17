@@ -6,18 +6,31 @@ class Plan extends Model{
 	static $belongs_to=[['region']];
 	static $has_many= [
 		['benefits','primary_key'=>'name','foreign_key'=>'plan_name'],
-		['rates']
+		['rates'],
+		['joint_plan_rates']
 	];
 
 
 
 	public function hasRateForAge($age){
-		$rates = Rate::count(['conditions'=>['plan_id = ? and min_age <= ? and max_age >= ?',$this->id,$age,$age]]);
+		if($this->joint==0){
+			$rates = Rate::count(['conditions'=>['plan_id = ? and min_age <= ? and max_age >= ?',$this->id,$age,$age]]);
+		}
+		else{
+			$rates = JointPlanRate::count(['conditions'=>['plan_id = ? and min_age <= ? and max_age >= ?',$this->id,$age,$age]]);
+		}
 		return $rates>0;
 	}
 
 	public function lastYearLoaded(){
-		$r = end($this->rates);
+		if($this->joint ==0){
+			$r = end($this->rates);
+		}
+		else{
+			$r = end($this->joint_plan_rates);
+		}
+		
+
 		if($r){
 				return $r->year;
 		}

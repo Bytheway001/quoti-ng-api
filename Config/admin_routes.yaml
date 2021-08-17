@@ -16,5 +16,6 @@ Admin\plans:
     show: [/admin/plans/:id,show,GET]
 Admin\admin:
     upload_plan: [/admin/upload,upload,POST]
+    upload_allianz_plan: [/admin/allianz,uploadAllianz,POST]
 Admin\users:
     create: [/admin/users,create,POST]

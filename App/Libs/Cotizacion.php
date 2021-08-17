@@ -11,6 +11,8 @@ class Cotizacion{
 	}
 
 
+
+
 	public function isValid(){
 
 		extract((array)$this->payload);
@@ -45,6 +47,7 @@ class Cotizacion{
 	public function execute(){
 		$this->regions = Country::find_by_short_name($this->payload['country'])->regions;
 		$this->getPlans();
+
 		foreach($this->plans as $plan){
 			$coverage = $plan->getBenefitByName('Cobertura Maxima');
 			$object =[
@@ -60,21 +63,20 @@ class Cotizacion{
 			foreach($deds as $ded){
 				try{
 					$object['rates'][]=[
-					'deductible'=>$ded->deductible,
-					'deductible_out'=>$ded->deductible_out,
-					'main_price'=>$plan->getPrice($this->payload['main_age'],$ded->deductible),
-					'couple_price'=>$this->payload['plan_type'] < 2 ? null : $plan->getPrice($this->payload['couple_age'],$ded->deductible),
-					'kids_price'=>$this->payload['plan_type'] < 3 ? null : $plan->getKidPrice($this->payload['kids_ages'],$ded->deductible),
-					'riders'=>$plan->getRidersForDeductible($ded->deductible),
-				];
+						'deductible'=>$ded->deductible,
+						'deductible_out'=>$ded->deductible_out,
+						'main_price'=>$plan->getPrice($this->payload['main_age'],$ded->deductible),
+						'couple_price'=>$this->payload['plan_type'] < 2 ? null : $plan->getPrice($this->payload['couple_age'],$ded->deductible),
+						'kids_price'=>$this->payload['plan_type'] < 3 ? null : $plan->getKidPrice($this->payload['kids_ages'],$ded->deductible),
+						'riders'=>$plan->getRidersForDeductible($ded->deductible),
+					];
 				}
 				catch(\Exception $e){
-					#print_r($plan);
 					print_r($e);
 					die();
 				}
 				
-		}
+			}
 
 
 			$result['plans'][]=$object;
@@ -85,12 +87,20 @@ class Cotizacion{
 
 	public function getPlans(){
 		foreach($this->regions as $region){
+
 			foreach($region->plans as $plan){
-				if(count($plan->rates)>0 and $plan->hasRateForAge($this->payload['main_age'])){
-					$this->plans[]=$plan;
-				}
+				$rateCount = $plan->joint == 0 ? count($plan->rates) : count($plan->joint_plan_rates);
+				
+					if($rateCount and $plan->hasRateForAge($this->payload['main_age'])){
+						$this->plans[]=$plan;
+					}
+				
+			
+				
 			}
 		}
+
+
 	}
 
 
