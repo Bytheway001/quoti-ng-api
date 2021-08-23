@@ -22,11 +22,30 @@ function totalize($plan){
 	return $initialPrice;
 }
 
+function getColumnWidth($plans){
+	$columns = count($plans)+1;
+	$width = (100/$columns)."%";
+	return '25%';
+}
+
 ?>
 <html>
 <head>
 	<meta charset="utf-8">
+
+
 	<style>
+	
+	@font-face {
+		font-family: 'Open Sans';
+		src: url(data:application/font-woff2;charset=utf-8;base64,<?= file_get_contents("../open-sans-b64.txt") ?>);
+		font-weight: bold;
+		font-style: normal;
+	}
+	
+	body{
+		font-family: 'Open Sans', sans-serif!important;
+	}
 	#page-wrapper{
 		padding: 20px;
 	}
@@ -50,7 +69,7 @@ function totalize($plan){
 		border-collapse: collapse;
 	}
 	table td,table th{
-		
+		width: <?= getColumnWidth($plans) ?>;
 
 	}
 	.table-header{

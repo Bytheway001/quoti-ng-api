@@ -182,12 +182,8 @@ class exportsController extends Controller{
 public function exportQuote(){
 	try{
 		$compare =json_decode(json_encode(Request::instance()->payload));
-
-
 		$pdf = new QuotePDF($compare);
-
 		$content = $pdf->toString();
-
 		Response::send(200,base64_encode($content));
 	}
 	catch(\Exception $e){
@@ -199,8 +195,10 @@ public function exportQuote(){
 
 public function exportCompare(){
 	
+	
 	try{
 		$compare =json_decode(json_encode(Request::instance()->payload));
+		
 		$pdf = new ComparePDF($compare);
 		$content = $pdf->toString();
 

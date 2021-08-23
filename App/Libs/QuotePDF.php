@@ -9,7 +9,7 @@ class QuotePDF extends Pdf{
 			'no-outline',
 			'orientation'=>'landscape'
 		]);
-		$this->binary="C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe";
+		$this->binary="/usr/bin/wkhtmltopdf";
 		$this->addPage(View::get_partial('partials','quote',$data));
 		
  	}

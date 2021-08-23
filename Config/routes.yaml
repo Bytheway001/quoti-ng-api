@@ -21,6 +21,7 @@ routes:
   exports:
     export_quote: [/exports/quote,exportQuote,POST]
     export_compare: [/exports/compare,exportCompare,POST]
+    get_export: [/exports/compare,exportCompare,GET]
  
 
 

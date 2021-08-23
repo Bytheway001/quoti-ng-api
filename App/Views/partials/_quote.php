@@ -25,8 +25,13 @@ function totalize($plan){
 ?>
 <html>
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'>
 	<meta charset="utf-8">
 	<style>
+
+	body{
+		font-family: 'Jolly Lodger';
+	}
 	#page-wrapper{
 		padding: 20px;
 	}
